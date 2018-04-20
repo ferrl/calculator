@@ -47,6 +47,14 @@ class InterpreterTest extends TestCase
         $this->assertNotNull($actual);
     }
 
+    /**
+     * @expectedException App\Exceptions\OperatorNotFound
+     */
+    public function testFailedToFindOperator()
+    {
+        $actual = $this->subject->findOperator('+');
+    }
+
     public function testReadSimpleSumOperation()
     {
         $actual = $this->subject->read('1 + 3');
