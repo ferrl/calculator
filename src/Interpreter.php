@@ -50,4 +50,14 @@ class Interpreter
     {
         return $this->operators;
     }
+
+    /**
+     * Adds a new operator.
+     *
+     * @param Operator $operator
+     */
+    public function addOperators(Operator $operator)
+    {
+        $this->operators[$operator->symbol()] = $operator;
+    }
 }
