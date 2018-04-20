@@ -1,9 +1,11 @@
 # Etapas do projeto
 
-### 1. Configuração do PHPUnit
+### 1. Configuração dos Pacotes de Teste
 
-- Importacão da dependência;
-- Funcionamento do primeiro teste de exemplo.
+- Importacão da dependência PHPUnit;
+- Funcionamento do primeiro teste unitário de exemplo;
+- Importação da dependência CodeCeption;
+- Funcionamento do primeiro teste de aceitação de exemplo.
 
 ### 0. Inicialização do Projeto
 
