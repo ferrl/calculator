@@ -18,4 +18,27 @@ class Calculator
     {
         $this->interpreter = $interpreter;
     }
+
+    /**
+     * Run a expression.
+     *
+     * @param string $expression
+     * @return int|float|double
+     * @throws Exceptions\OperatorNotFound
+     */
+    public function run($expression)
+    {
+        $result = 0;
+
+        $operations = $this->interpreter->read($expression);
+
+        foreach ($operations as $operation) {
+            $operator = $operation[0];
+            $operands = $operation[1];
+
+            $result += call_user_func_array([$operator, 'perform'], $operands);
+        }
+
+        return $result;
+    }
 }
