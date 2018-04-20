@@ -20,4 +20,11 @@ class SubOperatorTest extends TestCase
 
         $this->assertEquals(-2, $actual);
     }
+
+    public function testHasSymbol()
+    {
+        $actual = $this->subject->symbol();
+
+        $this->assertEquals('-', $actual);
+    }
 }

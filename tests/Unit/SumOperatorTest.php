@@ -20,4 +20,11 @@ class SumOperatorTest extends TestCase
 
         $this->assertEquals(4, $actual);
     }
+
+    public function testHasSymbol()
+    {
+        $actual = $this->subject->symbol();
+
+        $this->assertEquals('+', $actual);
+    }
 }
