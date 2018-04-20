@@ -15,17 +15,22 @@ class CalculatorTest extends TestCase
     public function setUp()
     {
         $operator = Mockery::mock(Operator::class);
-        $operator->shouldReceive('perform')->withArgs([1, 3])->andReturn(4);
+        $operator->shouldReceive('perform')
+            ->withArgs([1, 3])
+            ->andReturn(4);
 
         $interpreter = Mockery::mock(Interpreter::class);
-        $interpreter->shouldReceive('1 + 3')->andReturn([$operator, [1, 3]]);
+        $interpreter->shouldReceive('read')
+            ->withArgs(['1 + 3'])
+            ->andReturn([[$operator, [1, 3]]]);
 
         $this->subject = new Calculator($interpreter);
     }
 
-    public function testExecute()
+    public function testSimpleOperation()
     {
+        $actual = $this->subject->run('1 + 3');
 
-        $this->assertTrue(true);
+        $this->assertEquals(4, $actual);
     }
 }
