@@ -4,8 +4,6 @@ namespace App;
 
 use App\Exceptions\OperatorNotFound;
 use App\Operators\Operator;
-use App\Operators\SubOperator;
-use App\Operators\SumOperator;
 
 class Interpreter
 {

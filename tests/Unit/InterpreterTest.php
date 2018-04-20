@@ -26,7 +26,7 @@ class InterpreterTest extends TestCase
     public function testHasOneOperator()
     {
         $mock = Mockery::mock(Operator::class);
-        $mock->allows()->symbol()->andReturns('+');
+        $mock->shouldReceive('symbol')->andReturns('+');
 
         $this->subject->addOperators($mock);
 
@@ -38,7 +38,7 @@ class InterpreterTest extends TestCase
     public function testFindExistingOperator()
     {
         $mock = Mockery::mock(Operator::class);
-        $mock->allows()->symbol()->andReturns('+');
+        $mock->shouldReceive('symbol')->andReturns('+');
 
         $this->subject->addOperators($mock);
 
@@ -58,7 +58,7 @@ class InterpreterTest extends TestCase
     public function testReadSimpleSumOperation()
     {
         $mock = Mockery::mock(Operator::class);
-        $mock->allows()->symbol()->andReturns('+');
+        $mock->shouldReceive('symbol')->andReturns('+');
 
         $this->subject->addOperators($mock);
 
@@ -70,7 +70,7 @@ class InterpreterTest extends TestCase
     public function testReadSimpleSubOperation()
     {
         $mock = Mockery::mock(Operator::class);
-        $mock->allows()->symbol()->andReturns('-');
+        $mock->shouldReceive('symbol')->andReturns('-');
 
         $this->subject->addOperators($mock);
 
