@@ -2,11 +2,17 @@
 
 namespace App;
 
+use App\Operators\Operator;
 use App\Operators\SubOperator;
 use App\Operators\SumOperator;
 
 class Interpreter
 {
+    /**
+     * @var Operator[]
+     */
+    public $operators = [];
+
     /**
      * Read an expression and return a list of commands to execute.
      *
@@ -33,5 +39,15 @@ class Interpreter
         }
 
         return $commands;
+    }
+
+    /**
+     * Get list of operators.
+     *
+     * @return Operator[]
+     */
+    public function getOperators()
+    {
+        return $this->operators;
     }
 }
