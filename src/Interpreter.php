@@ -19,6 +19,7 @@ class Interpreter
      *
      * @param string $expression
      * @return array
+     * @throws OperatorNotFound
      */
     public function read($expression)
     {
@@ -26,18 +27,13 @@ class Interpreter
 
         preg_match('/(\d+)(?:\s*)([\+\-\*\/])(?:\s*)(\d+)/', $expression, $matches);
 
+        $operand1 = $matches[1];
         $operator = $matches[2];
+        $operand2 = $matches[3];
 
-        switch ($operator) {
-            case '+':
-                $commands[] = [new SumOperator, [$matches[1], $matches[3]]];
-                break;
-            case '-':
-                $commands[] = [new SubOperator, [$matches[1], $matches[3]]];
-                break;
-            default:
-                break;
-        }
+        $commands[] = [
+            $this->findOperator($operator), [$operand1, $operand2],
+        ];
 
         return $commands;
     }

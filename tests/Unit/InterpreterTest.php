@@ -52,11 +52,16 @@ class InterpreterTest extends TestCase
      */
     public function testFailedToFindOperator()
     {
-        $actual = $this->subject->findOperator('+');
+        $actual = $this->subject->findOperator('*');
     }
 
     public function testReadSimpleSumOperation()
     {
+        $mock = Mockery::mock(Operator::class);
+        $mock->allows()->symbol()->andReturns('+');
+
+        $this->subject->addOperators($mock);
+
         $actual = $this->subject->read('1 + 3');
 
         $this->assertCount(1, $actual);
@@ -64,6 +69,11 @@ class InterpreterTest extends TestCase
 
     public function testReadSimpleSubOperation()
     {
+        $mock = Mockery::mock(Operator::class);
+        $mock->allows()->symbol()->andReturns('-');
+
+        $this->subject->addOperators($mock);
+
         $actual = $this->subject->read('1 - 3');
 
         $this->assertCount(1, $actual);
