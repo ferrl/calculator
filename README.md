@@ -1,5 +1,12 @@
 # Etapas do projeto
 
+### 2. Criação das Primeiras Operações
+
+- Criação das classes a serem testadas;
+- Criação dos testes unitários;
+- Implementação da funcionalidade;
+- Repetir.
+
 ### 1. Configuração dos Pacotes de Teste
 
 - Importacão da dependência PHPUnit;
