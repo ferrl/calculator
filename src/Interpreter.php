@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\OperatorNotFound;
 use App\Operators\Operator;
 use App\Operators\SubOperator;
 use App\Operators\SumOperator;
@@ -46,9 +47,14 @@ class Interpreter
      *
      * @param string $symbol
      * @return Operator
+     * @throws OperatorNotFound
      */
     public function findOperator($symbol)
     {
+        if (! array_key_exists($symbol, $this->getOperators())) {
+            throw new OperatorNotFound($symbol);
+        }
+
         return $this->getOperators()[$symbol];
     }
 
