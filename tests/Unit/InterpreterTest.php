@@ -26,13 +26,25 @@ class InterpreterTest extends TestCase
     public function testHasOneOperator()
     {
         $mock = Mockery::mock(Operator::class);
-        $mock->allows()->symbol()->andReturns('*');
+        $mock->allows()->symbol()->andReturns('+');
 
         $this->subject->addOperators($mock);
 
         $actual = $this->subject->getOperators();
 
         $this->assertCount(1, $actual);
+    }
+
+    public function testFindExistingOperator()
+    {
+        $mock = Mockery::mock(Operator::class);
+        $mock->allows()->symbol()->andReturns('+');
+
+        $this->subject->addOperators($mock);
+
+        $actual = $this->subject->findOperator('+');
+
+        $this->assertNotNull($actual);
     }
 
     public function testReadSimpleSumOperation()
