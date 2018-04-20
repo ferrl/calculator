@@ -2,7 +2,7 @@
 
 namespace App\Operators;
 
-class SumOperator
+class SumOperator implements Operator
 {
     /**
      * Perform sum of two numbers.
