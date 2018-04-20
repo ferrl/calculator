@@ -12,7 +12,7 @@ class CalculatorTest extends TestCase
 {
     protected $subject;
 
-    public function setUp()
+    public function testSimpleOperation()
     {
         $operator = Mockery::mock(Operator::class);
         $operator->shouldReceive('perform')
@@ -24,12 +24,9 @@ class CalculatorTest extends TestCase
             ->withArgs(['1 + 3'])
             ->andReturn([[$operator, [1, 3]]]);
 
-        $this->subject = new Calculator($interpreter);
-    }
+        $calculator = new Calculator($interpreter);
 
-    public function testSimpleOperation()
-    {
-        $actual = $this->subject->run('1 + 3');
+        $actual = $calculator->run('1 + 3');
 
         $this->assertEquals(4, $actual);
     }
