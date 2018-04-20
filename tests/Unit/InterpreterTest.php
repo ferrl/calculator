@@ -14,6 +14,13 @@ class InterpreterTest extends TestCase
         $this->subject = new Interpreter();
     }
 
+    public function testHasNoOperators()
+    {
+        $actual = $this->subject->getOperators();
+
+        $this->assertEmpty(0, $actual);
+    }
+
     public function testReadSimpleSumOperation()
     {
         $actual = $this->subject->read('1 + 3');
