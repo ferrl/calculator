@@ -31,12 +31,23 @@ class Calculator
         $result = 0;
 
         $operations = $this->interpreter->read($expression);
+;
 
         foreach ($operations as $operation) {
             $operator = $operation[0];
-            $operands = $operation[1];
 
-            $result += call_user_func_array([$operator, 'perform'], $operands);
+            $operands = array_filter($operation[1], function ($a) {
+                return ! is_null($a);
+            });
+
+            if (count($operands) > 1) {
+                $result = call_user_func_array([$operator, 'perform'], $operands);
+                continue;
+            }
+
+            array_unshift($operands, $result);
+
+            $result = call_user_func_array([$operator, 'perform'], $operands);
         }
 
         return $result;

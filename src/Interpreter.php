@@ -22,18 +22,45 @@ class Interpreter
     public function read($expression)
     {
         $commands = [];
+        $bag = [];
 
-        preg_match('/(\d+)(?:\s*)([\+\-\*\/])(?:\s*)(\d+)/', $expression, $matches);
+        $aux = $expression;
 
-        $operand1 = $matches[1];
-        $operator = $matches[2];
-        $operand2 = $matches[3];
+        while (preg_match('/(\d+)(?:\s*)([\+\-\*\/\%])(?:\s*)(.*)/', $aux, $matches)) {
+            $bag[] = $matches[1];
+            $bag[] = $matches[2];
 
-        $commands[] = [
-            $this->findOperator($operator), [$operand1, $operand2],
-        ];
+            if (! array_key_exists(3, $matches)) {
+                break;
+            }
+
+            $aux = $matches[3];
+        }
+        $bag[] = $aux;
+
+        if (count($bag) < 3) {
+            throw new \Exception("Moisés!!!", 1);
+        }
+
+        $operand1 = array_shift($bag);
+        $operator = array_shift($bag);
+        $operand2 = array_shift($bag);
+        $commands[] = $this->operation($operator, $operand1, $operand2);
+
+        $_bag = array_chunk($bag, 2);
+        
+        foreach ($_bag as $item) {
+            $commands[] = $this->operation($item[0], $item[1]);
+        }
 
         return $commands;
+    }
+
+    private function operation($operator, $a, $b = null)
+    {
+        return [
+            $this->findOperator($operator), [$a, $b],
+        ];
     }
 
     /**

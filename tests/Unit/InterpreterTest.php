@@ -78,4 +78,20 @@ class InterpreterTest extends TestCase
 
         $this->assertCount(1, $actual);
     }
+
+    public function testReadTwoOperations()
+    {
+        $mock1 = Mockery::mock(Operator::class);
+        $mock1->shouldReceive('symbol')->andReturns('+');
+
+        $mock2 = Mockery::mock(Operator::class);
+        $mock2->shouldReceive('symbol')->andReturns('-');
+
+        $this->subject->addOperators($mock1);
+        $this->subject->addOperators($mock2);
+
+        $actual = $this->subject->read('1 - 3 + 9');
+
+        $this->assertCount(2, $actual);
+    }
 }
