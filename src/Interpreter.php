@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Operators\SubOperator;
 use App\Operators\SumOperator;
 
 class Interpreter
@@ -23,6 +24,9 @@ class Interpreter
         switch ($operator) {
             case '+':
                 $commands[] = [new SumOperator, [$matches[1], $matches[3]]];
+                break;
+            case '-':
+                $commands[] = [new SubOperator, [$matches[1], $matches[3]]];
                 break;
             default:
                 break;
