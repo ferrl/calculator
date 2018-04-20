@@ -1,0 +1,10 @@
+{
+    "name": "lucasferreira/calculator",
+    "authors": [
+        {
+            "name": "Lucas Ferreira",
+            "email": "me@ferrl.io"
+        }
+    ],
+    "require": {}
+}
