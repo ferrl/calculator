@@ -42,6 +42,17 @@ class Interpreter
     }
 
     /**
+     * Find operator by symbol.
+     *
+     * @param string $symbol
+     * @return Operator
+     */
+    public function findOperator($symbol)
+    {
+        return $this->getOperators()[$symbol];
+    }
+
+    /**
      * Get list of operators.
      *
      * @return Operator[]
