@@ -5,6 +5,13 @@ namespace App\Operators;
 interface Operator
 {
     /**
+     * Operator math symbol.
+     *
+     * @return string
+     */
+    public function symbol();
+
+    /**
      * Perform action in two numbers.
      *
      * @param int|float|double $a

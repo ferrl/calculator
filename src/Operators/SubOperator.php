@@ -15,4 +15,14 @@ class SubOperator implements Operator
     {
         return $a - $b;
     }
+
+    /**
+     * Operator math symbol.
+     *
+     * @return string
+     */
+    public function symbol()
+    {
+        return '-';
+    }
 }
