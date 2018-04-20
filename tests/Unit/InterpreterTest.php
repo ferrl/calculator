@@ -16,15 +16,15 @@ class InterpreterTest extends TestCase
 
     public function testReadSimpleSumOperation()
     {
-        $actual = count($this->subject->read('1 + 3'));
+        $actual = $this->subject->read('1 + 3');
 
-        $this->assertEquals(1, $actual);
+        $this->assertCount(1, $actual);
     }
 
     public function testReadSimpleSubOperation()
     {
-        $actual = count($this->subject->read('1 - 3'));
+        $actual = $this->subject->read('1 - 3');
 
-        $this->assertEquals(1, $actual);
+        $this->assertCount(1, $actual);
     }
 }
