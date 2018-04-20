@@ -1,5 +1,9 @@
 # Etapas do projeto
 
+### 3. Avançando na Aplicação
+
+- Criação do interpretador.
+
 ### 2. Criação das Primeiras Operações
 
 - Criação das classes a serem testadas;
